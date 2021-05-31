@@ -1,0 +1,49 @@
+/* reset css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    /* partage l'espace disponible */
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* fisrt animation */
+.slide-line{
+    font-family: sans-serif;
+    font-size: 50px;
+    text-decoration: none;
+    color: #222;
+    /* on met un position relative pour avoir une référence pour ses enfants */
+    position: relative;
+}
+
+/* ------------------------ animation 1 --------------------------- */
+.slide-line::before{
+    /* on instancie un contenu vide */
+    content: "";
+    /* la position absolue de l'élément relatif */
+    position:absolute;
+    background-color: #222;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    /* permet de placer le point de transformation - 100% sur x veut dire au bout de la ligne des X donc le E de explore */
+    /* rien n'empêche d'aller plus loin que 100%  */
+    transform-origin: 100% 0;
+    /* je demande à ma ligne de représenter 0% de ma ligne (donc elle disparait) */
+    transform: scaleX(0);
+    transition: transform 0.4s;
+}
+
+/* quand on va hover, alors la pseudo class before */
+.slide-line:hover::before{
+    /* je demande en hover à ma ligne de démarrer à gauche */
+    transform-origin: 0 0;
+    /* et de rejoindre la droite */
+    transform: scaleX(1);
+}
