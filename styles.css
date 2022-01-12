@@ -8,13 +8,15 @@ body{
     display: flex;
     /* partage l'espace disponible */
     justify-content: space-around;
+    /* alignement horizontal */
     align-items: center;
     flex-direction: column;
-    /* je donne une hauteur à ma page */
+    /* je donne une hauteur à ma page de sorte ç ce que le space-around fonctionne */
     height: 60vh;
 }
 
-/* fisrt animation */
+
+/* ------------------------ animation 1 : soulignement glissé --------------------------- */
 .slide-line{
     font-family: sans-serif;
     font-size: 50px;
@@ -24,7 +26,6 @@ body{
     position: relative;
 }
 
-/* ------------------------ animation 1 : soulignement glissé --------------------------- */
 .slide-line::before{
     /* on instancie un contenu vide */
     content: "";
@@ -121,3 +122,10 @@ body{
     /* on remonte les lignes grâce au 0px */
     transform: translate(-50%, 0px);
 }
+.two-lines::before, .two-lines:hover::after{
+    transition-delay: 0.1s;
+}
+.two-lines:hover::before{
+    transition-delay: 0s;
+}
+
